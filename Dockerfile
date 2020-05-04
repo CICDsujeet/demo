@@ -1,7 +1,11 @@
-# Pull base image 
-From tomcat:8-jre8 
+# Pull base image
+From tomcat:latest
 
-# Maintainer 
-MAINTAINER "valaxytech@gmail.com" 
-COPY ./webapp.war /usr/local/tomcat/webapps
-RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+# Maintainer
+MAINTAINER "@gmail.com"
+
+COPY ./webapps/*.war /usr/local/tomcat/webapps
+
+EXPOSE 8080
+
+CMD ["catalina","run"]
