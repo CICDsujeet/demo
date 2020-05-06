@@ -7,6 +7,11 @@ services:
       - '8080:8080'
     networks:
       - ceofex-network
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 2
+        delay: 20s
   
   nginx:
     image: nginx:latest
