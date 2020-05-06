@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  webapp:
+    image: ceofexteam79/webapp
+    ports:
+      - '8080:8080'
+    networks:
+      - ceofex-network
+  
+  nginx:
+    image: nginx
+    ports:
+      - '8090:80'
+    networks:
+      - ceofex-network
+
+networks:
+  ceofex-network:
+    ipam:
+      config:
+        -subnet: 10.0.0.0/27
