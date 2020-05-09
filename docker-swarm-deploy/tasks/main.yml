@@ -1,0 +1,21 @@
+---
+# tasks file for docker-swarm-deploy
+- name: include creds.yml variable
+  include_vars: creds.yml
+
+- name: build image
+  command: docker build -t {{ image_name }}:{{ image_tag }} .
+
+- name: login to docker hub
+  command: docker login -u {{ dockerhub_user }} -p {{ dockerhub_pass }}
+
+- name: push image to docker hub
+  command: docker push {{ image_name }}:{{ image_tag }}
+
+- name: remove the local image
+  command: docker rmi {{ image_name }}:{{ image_tag }}
+  ignore_errors: true
+
+- name: deploy docker services into swarm mode
+  command:  docker stack deploy -c docker-compose.yaml ceofex-webapp
+

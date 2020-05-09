@@ -1,0 +1,5 @@
+---
+# vars file for docker-swarm-deploy
+image_name: ceofexteam79/webapp
+image_tag: latest
+
