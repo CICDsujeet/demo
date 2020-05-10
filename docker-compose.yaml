@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  webapp:
+    image: ceofexteam79/webapp:latest
+    ports:
+      - '8080:8080'
+    networks:
+      - ceofex-network
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 2
+        delay: 20s
+  
+  nginx:
+    image: nginx:latest
+    ports:
+      - '5000:80'
+    networks:
+      - ceofex-network
+
+networks:
+  ceofex-network:
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
