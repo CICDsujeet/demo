@@ -24,4 +24,7 @@
      ignore_errors: true
    
    - name: deploy docker services into swarm mode
-     command:  docker stack deploy -c docker-compose.yaml ceofex-webapp 
+     command:  docker stack deploy -c docker-compose.yaml ceofex-webapp
+     
+   - name: prune unused images 
+     command: docker image prune -f
