@@ -1,0 +1,27 @@
+---
+- 
+  name: building docker image and pushing to docker hub
+  hosts: docker_worker
+  tasks:
+   - name: ping
+     ping:
+  
+-
+  name: build docker image
+  hosts: docker_manager
+  tasks:
+   - name: build image
+     command: docker build -t ceofexteam79/webapp:latest .
+
+   - name: login to docker hub
+     command: docker login -u ceofexteam79 -p ceofexteam79
+   
+   - name: push image to docker hub
+     command: docker push ceofexteam79/webapp:latest
+
+   - name: remove the local image
+     command: docker rmi ceofexteam79/webapp:latest
+     ignore_errors: true
+   
+   - name: deploy docker services into swarm mode
+     command:  docker stack deploy -c docker-compose.yaml ceofex-webapp 
