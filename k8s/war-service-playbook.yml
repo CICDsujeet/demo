@@ -1,0 +1,11 @@
+---
+- name: deloying k8s service
+  hosts: k8s
+  tasks:
+    - name: copy service yamls
+      copy:
+        src: /home/ansadmin/k8s/war-service.yml
+        dest: /home/admin/k8s
+
+    - name: run service yaml
+      command: kubectl apply -f k8s/war-service.yml
