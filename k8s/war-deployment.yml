@@ -18,5 +18,6 @@ spec:
       containers:
         - name: demo-war
           image: ceofexteam79/webapp
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
