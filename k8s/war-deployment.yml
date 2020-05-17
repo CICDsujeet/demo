@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: war-deployment
+  labels:
+    app: ceofex-demo-war
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ceofex-demo-war
+  template:
+    metadata:
+      name: ceofex-demo-war
+      labels:
+        app: ceofex-demo-war
+    spec:
+      containers:
+        - name: demo-war
+          image: ceofexteam79/webapp
+          ports:
+            - containerPort: 8080
