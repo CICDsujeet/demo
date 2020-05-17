@@ -3,3 +3,6 @@
 
 [docker_worker]
 worker1 ansible_host=10.0.0.12
+
+[k8s]
+k8s ansible_host=3.23.112.75 ansible_user=admin
