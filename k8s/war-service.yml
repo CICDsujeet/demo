@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-war-service
+  labels:
+    app: ceofex-demo-war
+spec:
+  type: LoadBalancer
+  selector:
+    app: ceofex-demo-war
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30001
