@@ -3,5 +3,5 @@
   name: deploy ceofex webapp using ansible playbook into docker swarm
   hosts: docker_manager
   roles:
-    - role: '/home/ansadmin/ansible-roles/docker-swarm-deploy'
+    - role: '/home/ansadmin/ansible/ansible-roles/docker-image-war'
 

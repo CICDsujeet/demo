@@ -16,6 +16,3 @@
   command: docker rmi {{ image_name }}:{{ image_tag }}
   ignore_errors: true
 
-- name: deploy docker services into swarm mode
-  command:  docker stack deploy -c docker-compose.yaml ceofex-webapp
-
