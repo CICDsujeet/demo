@@ -1,0 +1,15 @@
+---
+- name: create deployment using pods
+  hosts: k8s
+
+  tasks:
+    - name: copy yamls
+      copy:
+        src: /home/ansadmin/k8s/war-deployment.yml
+        dest: /home/admin/k8s
+
+    - name: run the deployment yml file
+      command: kubectl create -f k8s/war-deployment.yml
+
+    - name: update deployment with new pods if image updated in docker hub
+      command: kubectl rollout restart deployment/war-deployment
